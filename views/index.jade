@@ -9,4 +9,39 @@ block content
     div.search-box.row-fluid.form-inline
     div.results-container
         ul.episode-list
+            li(ng-repeat="tvshow in results")
+                div.row-fluid
+                    div.span3
+                        img(src="{{tvshow.episode.images.screen}}")
+                        div.ratings
+                            strong Ratings:
+                            span.label
+                                i.icon-thumbs-up
+                                |{{tvshow.episode.ratings.loved}}
+                            span.label
+                                i.icon-thumbs-down
+                                |{{tvshow.episode.ratings.hated}}
+                            span.label.label-important(ng-class="{'label-success': tvshow.episode.ratings.percentage >= 50}")
+                                |<strong>%</strong> {{tvshow.episode.ratings.percentage}}
+                    div.span6
+                        h3 {{tvshow.show.title}}: {{tvshow.episode.title}}
+                        p {{tvshow.episode.overview}}
+                    div.span3
+                        div.fulldate.pull-right.label.label-info {{tvshow.date}}
+                        ul.show-info
+                            li
+                                strong On Air:
+                                {{tvshow.show.air_day}} {{tvshow.show.air_time}}
+                            li
+                                strong Network:
+                                {{tvshow.show.network}}
+                            li
+                                strong Season #:
+                                {{tvshow.episode.season}}
+                            li
+                                strong Genres:
+                                span.label.label-inverse.genre(ng-repeat="genre in tvshow.show.genres") {{genre}}
+
     div.results-bottom
+
+
