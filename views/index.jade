@@ -1,5 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.banner
+    div.container
+        h1 TV SHOW PREMIERES
+  div.container.main-frame(ng-app="TVPremieresApp" ng-controller="mainController" ng-init="init()")
+    div.search-box.row-fluid.form-inline
+    div.search-box.row-fluid.form-inline
+    div.results-container
+        ul.episode-list
+    div.results-bottom
